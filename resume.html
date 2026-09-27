@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume — Miska Alexia</title>
+    <style>
+        :root {
+            --wwu-dark-blue: #003F87;
+            --wwu-light-blue: #007AC8;
+            --bg: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --text: #333;
+            --text-muted: #666;
+            --border: #E0E0E0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --max-width: 800px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+        .top-nav { position: sticky; top: 0; z-index: 100; background: var(--card-bg); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--wwu-dark-blue); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; padding: 0.25rem 0; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--wwu-dark-blue); border-bottom-color: var(--wwu-dark-blue); }
+        /* Breadcrumb */
+        .breadcrumb { padding: 1rem 0; font-size: 0.9rem; color: var(--text-muted); }
+        .breadcrumb a { color: var(--wwu-dark-blue); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 0.5rem; }
+        /* Hero */
+        .resume-hero { padding: 2rem 0 1rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .resume-hero h1 { font-size: 2.5rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem; }
+        .resume-hero .tagline { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .resume-hero .contact { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.95rem; color: var(--text); }
+        .resume-hero .contact a { color: var(--wwu-dark-blue); text-decoration: none; }
+        .resume-hero .contact a:hover { text-decoration: underline; }
+        .resume-hero .download-btn { display: inline-block; margin-top: 1rem; padding: 0.625rem 1.25rem; background: var(--wwu-dark-blue); color: white; text-decoration: none; border-radius: var(--radius); font-weight: 500; font-size: 0.9rem; transition: background 0.2s; }
+        .resume-hero .download-btn:hover { background: #002d6b; }
+        /* Sections */
+        .section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+        .section:last-of-type { border-bottom: none; }
+        .section h2 { font-size: 1.5rem; color: var(--wwu-dark-blue); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .section h2::before { content: ''; width: 4px; height: 1.5rem; background: var(--wwu-dark-blue); border-radius: 2px; }
+        .section p { margin-bottom: 1rem; color: var(--text); }
+        .section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .section li { margin-bottom: 0.5rem; }
+        .section strong { color: var(--text); }
+        .entry { margin-bottom: 1.5rem; }
+        .entry:last-child { margin-bottom: 0; }
+        .entry-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+        .entry-title { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+        .entry-title a { color: var(--wwu-dark-blue); text-decoration: none; }
+        .entry-title a:hover { text-decoration: underline; }
+        .entry-meta { font-size: 0.9rem; color: var(--text-muted); }
+        .entry-bullets { margin-left: 1.5rem; }
+        .entry-bullets li { margin-bottom: 0.35rem; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+        .skill-category { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
+        .skill-category h3 { font-size: 0.9rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem; font-weight: 600; }
+        .skill-category p { font-size: 0.85rem; color: var(--text); margin: 0; line-height: 1.8; }
+        /* Project Cards */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; padding: 1rem 0; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+        .project-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .project-card h2 { font-size: 1.25rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem; }
+        .project-card .meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+        .project-card p { color: var(--text); margin-bottom: 1rem; font-size: 0.9rem; }
+        .project-card .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { background: var(--wwu-dark-blue); color: white; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 500; }
+        /* Footer */
+        footer { padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .footer-links a { color: var(--wwu-dark-blue); text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .resume-hero h1 { font-size: 2rem; }
+            .nav-links { gap: 1rem; }
+            .resume-hero .contact { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand" aria-label="Home">Miska Alexia</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html" class="active" aria-current="page">Resume</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span aria-current="page">Resume</span>
+        </nav>
+        <header class="resume-hero">
+            <h1>Miska Alexia</h1>
+            <p class="tagline">Systems & Software Engineer</p>
+            <div class="contact">
+                <span>Bellingham, WA & Anchorage, AK</span>
+                <span>(907) 717-5360</span>
+                <span><a href="mailto:alexia.miska@gmail.com">alexia.miska@gmail.com</a></span>
+            </div>
+            <a href="Miska Alexia Resume.pdf" download class="download-btn">Download PDF</a>
+        </header>
+        <section class="section" aria-labelledby="education">
+            <h2 id="education">Education</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Western Washington University</span>
+                    <span class="entry-meta">Bellingham, WA</span>
+                </div>
+                <p class="entry-meta">Computer Science Major · Creative Writing Minor · 3.52 GPA</p>
+                <ul class="entry-bullets">
+                    <li>Relevant coursework: Physics 161–163, Linear Algebra, Multivariable Calculus, Data Structures, Algorithms, and electives from the Math/Computer Science department.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="section" aria-labelledby="experience">
+            <h2 id="experience">Experience</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Senior Project Primary Client Liaison — Susitronix Partnership</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Managed a small team for one school year using Agile methodologies, with weekly stand-ups, sprint planning, and retrospectives with the client and faculty advisor.</li>
+                    <li>Served as project liaison, communicating expectations with the client, managing my team's workload, and working with the client to set goals and communicate our progress.</li>
+                    <li>Recognized by the client for my excellent communication.</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">International Understanding Internship — See Stories</span>
+                    <span class="entry-meta">Anchorage, AK · 2020</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Worked with an Alaskan non-profit dedicated to building inclusive communities with film and story.</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Documentary Filmmaking Internship — See Stories</span>
+                    <span class="entry-meta">Anchorage, AK · 2025</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Worked with See Stories with the specific goal of creating material for Alaska Studies Curriculum.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="section" aria-labelledby="projects">
+            <h2 id="projects">Projects</h2>
+            <div class="projects-grid">
+                <a href="toyos.html" class="project-card">
+                    <h2>Object-Oriented Monolithic Kernel</h2>
+                    <div class="meta">C++ · RiscV64 Virtual Machine · Solo Project</div>
+                    <p>Full memory management system with paging and multiple allocation strategies. Implemented multithreading, filesystem management, and device drivers. Significant GDB debugging. Based on Dr. Phil Nelson's ToyOS.</p>
+                    <div class="tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">RISC-V</span>
+                        <span class="tag">OS Dev</span>
+                        <span class="tag">Memory Management</span>
+                    </div>
+                </a>
+                <a href="#" class="project-card" style="pointer-events: none; opacity: 0.7;">
+                    <h2>Bevy Game Project</h2>
+                    <div class="meta">Rust · 2025–Ongoing</div>
+                    <p>Physics setup with Avian engine including collider mapping. Level deconstruction/construction system with resource loading, scene management, ECS, and UI interaction. Built on Unity/Unreal experience.</p>
+                    <div class="tags">
+                        <span class="tag">Rust</span>
+                        <span class="tag">Bevy</span>
+                        <span class="tag">Avian Physics</span>
+                        <span class="tag">ECS</span>
+                    </div>
+                </a>
+                <a href="#" class="project-card" style="pointer-events: none; opacity: 0.7;">
+                    <h2>Senior Project Radar Data Forwarding System</h2>
+                    <div class="meta">Rust · Ultra96v2 MPSOC Arm64 · Susitronix</div>
+                    <p>Server and archiver transmitting 2GB/s over local network. Networking with ZeroMQ, data archival with HDF5, custom command management for radar visualization client.</p>
+                    <div class="tags">
+                        <span class="tag">Rust</span>
+                        <span class="tag">ZeroMQ</span>
+                        <span class="tag">HDF5</span>
+                        <span class="tag">Arm64</span>
+                    </div>
+                </a>
+                <a href="#" class="project-card" style="pointer-events: none; opacity: 0.7;">
+                    <h2>Linux Systems — Gentoo Distribution</h2>
+                    <div class="meta">2020–Ongoing</div>
+                    <p>Deep Linux knowledge: SystemD/OpenRC, X11/Wayland, boot process, UEFI Secure Boot, TPM, LUKS, KVM/QEMU/VirtIO/IOMMU. Automation scripts for POSIX tasks.</p>
+                    <div class="tags">
+                        <span class="tag">Linux</span>
+                        <span class="tag">Gentoo</span>
+                        <span class="tag">KVM/QEMU</span>
+                        <span class="tag">Systems</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section class="section" aria-labelledby="skills">
+            <h2 id="skills">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>C, C++, C#, Rust, Java, Python, Bash</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Systems & OS</h3>
+                    <p>Linux (Gentoo), SystemD, OpenRC, X11, Wayland, Boot process, UEFI Secure Boot, TPM, LUKS, KVM, QEMU, VirtIO, IOMMU</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Core CS</h3>
+                    <p>Memory management, Paging, Allocation strategies, Multithreading, Concurrency, Profiling, Optimization, Data-oriented design</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & DevOps</h3>
+                    <p>Git, GDB, Valgrind, SQL, CI/CD testing, Vim, POSIX CLI, Azure DevOps (ADO), Jira, Docker, Podman</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Game Engines & Graphics</h3>
+                    <p>Unreal Engine, Unity, Godot, Bevy, Blender, Avian physics engine</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Networking & Data</h3>
+                    <p>ZeroMQ (ZMQ), HDF5</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Communication</h3>
+                    <p>Technical writing, Documentation, Client and manager communication</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Miska Alexia — Systems & Software Engineer</p>
+            <div class="footer-links">
+                <a href="https://github.com/VoidAndCaffeine" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/voidandcaffeine/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:alexia.miska+portfolio@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
