@@ -2,6 +2,7 @@
 
 ## Tech Stack & Architecture
 - A github pages website automatically updated on push via github actions
+- Make every attempt possible to maintain a consistent design language
 
 ## Critical Rules & Guardrails
 - **AI Constraints:** Never write placeholder code or comments like `// TODO: implement later`. Write complete, working functions.
