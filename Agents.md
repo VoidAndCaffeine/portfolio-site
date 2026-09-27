@@ -1,7 +1,7 @@
 # Project Context: Miska Alexia's portfolio website
 
 ## Tech Stack & Architecture
-- A website automatically updated on push via github actions
+- A github pages website automatically updated on push via github actions
 
 ## Critical Rules & Guardrails
 - **AI Constraints:** Never write placeholder code or comments like `// TODO: implement later`. Write complete, working functions.
