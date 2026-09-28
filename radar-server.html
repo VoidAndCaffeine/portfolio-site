@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Server Data Pipeline — Miska Alexia</title>
+    <style>
+        :root {
+            --wwu-dark-blue: #003F87;
+            --wwu-light-blue: #007AC8;
+            --bg: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --text: #333;
+            --text-muted: #666;
+            --border: #E0E0E0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --max-width: 800px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+        .top-nav { position: sticky; top: 0; z-index: 100; background: var(--card-bg); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--wwu-dark-blue); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; padding: 0.25rem 0; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--wwu-dark-blue); border-bottom-color: var(--wwu-dark-blue); }
+        /* Breadcrumb */
+        .breadcrumb { padding: 1rem 0; font-size: 0.9rem; color: var(--text-muted); }
+        .breadcrumb a { color: var(--wwu-dark-blue); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 0.5rem; }
+        /* Hero */
+        .project-hero { padding: 2rem 0 1rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .project-hero h1 { font-size: 2.5rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem; }
+        .project-hero .meta { color: var(--text-muted); font-size: 1rem; }
+        .project-hero .meta strong { color: var(--text); }
+        /* Sections */
+        .section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+        .section:last-of-type { border-bottom: none; }
+        .section h2 { font-size: 1.5rem; color: var(--wwu-dark-blue); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .section h2::before { content: ''; width: 4px; height: 1.5rem; background: var(--wwu-dark-blue); border-radius: 2px; }
+        .section p { margin-bottom: 1rem; color: var(--text); }
+        .section ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .section li { margin-bottom: 0.5rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .tag { background: var(--wwu-dark-blue); color: white; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500; }
+        .tag.secondary { background: var(--wwu-light-blue); }
+        .notice { background: #FFF8E1; border: 1px solid #FFE082; border-radius: var(--radius); padding: 1rem; margin-top: 1.5rem; color: #5D4E00; font-size: 0.9rem; }
+        .notice strong { color: var(--wwu-dark-blue); }
+        /* Navigation at bottom */
+        .page-nav { display: flex; justify-content: space-between; padding: 2rem 0; }
+        .page-nav a { color: var(--wwu-dark-blue); text-decoration: none; font-weight: 500; padding: 0.5rem 1rem; border: 1px solid var(--wwu-dark-blue); border-radius: var(--radius); transition: background 0.2s, color 0.2s; }
+        .page-nav a:hover { background: var(--wwu-dark-blue); color: white; }
+        /* Footer */
+        footer { padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .footer-links a { color: var(--wwu-dark-blue); text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .project-hero h1 { font-size: 2rem; }
+            .nav-links { gap: 1rem; }
+            .page-nav { flex-direction: column; gap: 1rem; align-items: stretch; }
+            .page-nav a { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand" aria-label="Home">Miska Alexia</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="projects.html" class="active" aria-current="page">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="projects.html">Projects</a>
+            <span>/</span>
+            <span aria-current="page">Radar Server Data Pipeline</span>
+        </nav>
+        <header class="project-hero">
+            <h1>Radar Server Data Pipeline</h1>
+            <div class="meta">
+                <strong>Senior Project — Susitronix Partnership</strong> · Ultra96v2 Arm64 · Rust · 2023–2024
+            </div>
+        </header>
+        <section class="section" aria-labelledby="overview">
+            <h2 id="overview">Overview</h2>
+            <p>A dual-mode (Server/Archiver) radar data pipeline built for Professor John Mower's radar system at Western Washington University, in partnership with Susitronix. The system sources radar data — from hardware, simulated sources, or sample files — and streams it at high throughput over ZeroMQ. The Archiver mode subscribes to the Server's data stream, persists it to HDF5, forwards live data to clients, and serves historical data on demand.</p>
+            <div class="tags">
+                <span class="tag">Rust</span>
+                <span class="tag">ZeroMQ</span>
+                <span class="tag">HDF5</span>
+                <span class="tag">Arm64</span>
+                <span class="tag">Systems Programming</span>
+            </div>
+        </section>
+        <section class="section" aria-labelledby="contributions">
+            <h2 id="contributions">My Contributions</h2>
+            <p>As lead developer and client liaison on a small team, I:</p>
+            <ul>
+                <li><strong>Architected and implemented the entire Rust codebase</strong> — system design, all modules (ZMQ networking, HDF5 archival, radar packet serialization, CLI argument parsing, configuration).</li>
+                <li><strong>Designed the data pipeline</strong> — ZeroMQ Pub/Sub for high-throughput data streaming (2GB/s), Router/Dealer patterns for client settings channels and archived data requests.</li>
+                <li><strong>Implemented HDF5 archival</strong> — custom schemas for radar packets using <code>hdf5-metno</code>, with zero-copy reads for live forwarding.</li>
+                <li><strong>Collaborated on the network protocol specification</strong> with the team, and worked directly with the client (Susitronix) to define the on-disk HDF5 format.</li>
+                <li><strong>Served as client liaison</strong> — managed Agile/Scrum process (weekly stand-ups, sprint planning, retrospectives), communicated expectations, managed team workload, and was recognized by the client for excellent communication.</li>
+                <li><strong>Code reviewed the Qt-based visualization client</strong> (separate private repository).</li>
+            </ul>
+        </section>
+        <section class="section" aria-labelledby="highlights">
+            <h2 id="highlights">Technical Highlights</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                <div>
+                    <h3 style="font-size: 1rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem;">Systems & Networking</h3>
+                    <div class="tags">
+                        <span class="tag">Rust</span>
+                        <span class="tag">ZeroMQ (Pub/Sub, Router/Dealer)</span>
+                        <span class="tag">HDF5 (hdf5-metno)</span>
+                        <span class="tag">Arm64 Cross-Compilation</span>
+                        <span class="tag">2GB/s Throughput</span>
+                        <span class="tag">Simulated & Hardware Data Sourcing</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem;">Software Engineering</h3>
+                    <div class="tags">
+                        <span class="tag secondary">Agile / Scrum</span>
+                        <span class="tag secondary">Client Communication</span>
+                        <span class="tag secondary">Protocol Design</span>
+                        <span class="tag secondary">Performance Optimization</span>
+                        <span class="tag secondary">Git Workflow</span>
+                        <span class="tag secondary">Code Review (Qt Client)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" aria-labelledby="architecture">
+            <h2 id="architecture">Architecture & Modes</h2>
+            <p>The binary runs in three modes via CLI flags:</p>
+            <ul>
+                <li><strong>Dummy Server (<code>--dummy</code>)</strong> — Generates simulated radar data (configurable delay, packet structure) and publishes via ZeroMQ PUB socket. Includes a settings DEALER channel for runtime configuration from the Archiver.</li>
+                <li><strong>Archiver (<code>--archive</code>)</strong> — Subscribes to the Server's data stream (ZMQ SUB), writes each packet to an HDF5 file, forwards live data to clients via ZMQ PUB, serves archived data on request via ZMQ ROUTER, and manages settings for both servers and clients via ZMQ ROUTER/DEALER.</li>
+                <li><strong>Server (<code>--server</code>)</strong> — (Not yet implemented) Intended to source real radar hardware data, handle radar control commands from authorized clients, and implement radar blanking.</li>
+            </ul>
+            <p>The <code>plugins</code> module organizes core logic:</p>
+            <ul>
+                <li><code>source_data</code> — traits and structs for data sourcing (simulated, hardware, archived)</li>
+                <li><code>publish_data</code> — ZeroMQ connection management (Server, Subscriber, SettingsChannel traits)</li>
+                <li><code>radar_packet</code> — packet structures (ComPacket, HDF5Packet, SettingsPacket, Identity, State) and HDF5 serialization traits</li>
+            </ul>
+        </section>
+        <section class="section" aria-labelledby="qt-client">
+            <h2 id="qt-client">Qt Visualization Client</h2>
+            <p>A separate Qt-based desktop client for radar visualization exists in a private repository. My involvement was limited to code review.</p>
+        </section>
+        <section class="section" aria-labelledby="status">
+            <h2 id="status">Project Status</h2>
+            <p>Functional for Dummy Server and Archiver modes. The project was passed to a new team after graduation for continued development (real hardware integration, radar control commands, security hardening, and true Server mode).</p>
+            <div class="notice">
+                <strong>Source Code:</strong> MIT licensed, available at <a href="https://github.com/VoidAndCaffeine/radar-server" target="_blank" rel="noopener" style="color: var(--wwu-dark-blue);">github.com/VoidAndCaffeine/radar-server</a><br>
+                <strong>Documentation:</strong> <a href="https://voidandcaffeine.github.io/radar-server/radar_server/" target="_blank" rel="noopener" style="color: var(--wwu-dark-blue);">voidandcaffeine.github.io/radar-server/radar_server/</a>
+            </div>
+        </section>
+        <nav class="page-nav" aria-label="Page navigation">
+            <a href="projects.html">← Back to Projects</a>
+            <a href="index.html">← Home</a>
+        </nav>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Miska Alexia — Systems & Software Engineer</p>
+            <div class="footer-links">
+                <a href="https://github.com/VoidAndCaffeine" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/voidandcaffeine/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:alexia.miska+portfolio@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

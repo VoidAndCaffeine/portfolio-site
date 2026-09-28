@@ -3,6 +3,7 @@
 ## Tech Stack & Architecture
 - A github pages website automatically updated on push via github actions
 - Make every attempt possible to maintain a consistent design language
+- When pages are added or changed, ensure that the link cards on other pages still contain relevent titles and discriptions.
 
 ## Critical Rules & Guardrails
 - **AI Constraints:** Never write placeholder code or comments like `// TODO: implement later`. Write complete, working functions.
