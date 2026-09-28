@@ -32,13 +32,14 @@
         .hero h1 { font-size: 3rem; font-weight: 700; color: var(--wwu-dark-blue); margin-bottom: 1rem; }
         .hero .tagline { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 2rem; }
         .hero .intro { font-size: 1.1rem; color: var(--text); max-width: 600px; margin: 0 auto; }
-        /* Featured Project Card */
+        /* Featured Projects Grid */
         .featured { padding: 2rem 0 4rem; }
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
         .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
         .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-        .card h2 { font-size: 1.5rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem; }
+        .card h2 { font-size: 1.4rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem; }
         .card .meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
-        .card p { color: var(--text); }
+        .card p { color: var(--text); font-size: 0.95rem; }
         .card .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
         .tag { background: var(--wwu-dark-blue); color: white; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500; }
         /* Footer */
@@ -71,19 +72,45 @@
             <p class="intro">I build reliable, performant systems — from operating system kernels to production web services. Currently seeking full-time opportunities in systems programming and backend engineering.</p>
         </section>
         <section class="featured" aria-labelledby="featured-title">
-            <h2 id="featured-title" style="margin-bottom: 1.5rem; color: var(--wwu-dark-blue);">Featured Project</h2>
-            <a href="toyos.html" class="card">
-                <h2>ToyOS - Object-Oriented Monolithic Kernel</h2>
-                <div class="meta">CSCI 447, Western Washington University · Dr. Phil Nelson</div>
-                <p>A complete x86 teaching OS kernel with virtual memory management, filesystem, process scheduling, synchronization primitives, and syscall interface. Built from skeleton code over a semester.</p>
-                <div class="tags">
-                    <span class="tag">C/C++</span>
-                    <span class="tag">x86 Assembly</span>
-                    <span class="tag">Virtual Memory</span>
-                    <span class="tag">File Systems</span>
-                    <span class="tag">Concurrency</span>
-                </div>
-            </a>
+            <h2 id="featured-title" style="margin-bottom: 1.5rem; color: var(--wwu-dark-blue);">Featured Projects</h2>
+            <div class="featured-grid">
+                <a href="toyos.html" class="card">
+                    <h2>ToyOS - Object-Oriented Monolithic Kernel</h2>
+                    <div class="meta">CSCI 447, Western Washington University · Dr. Phil Nelson</div>
+                    <p>A complete x86 teaching OS kernel with virtual memory management, filesystem, process scheduling, synchronization primitives, and syscall interface. Built from skeleton code over a semester.</p>
+                    <div class="tags">
+                        <span class="tag">C/C++</span>
+                        <span class="tag">x86 Assembly</span>
+                        <span class="tag">Virtual Memory</span>
+                        <span class="tag">File Systems</span>
+                        <span class="tag">Concurrency</span>
+                    </div>
+                </a>
+                <a href="radar-server.html" class="card">
+                    <h2>Radar Server Data Pipeline</h2>
+                    <div class="meta">Senior Project · Susitronix Partnership · Ultra96v2 Arm64</div>
+                    <p>Dual-mode (Server/Archiver) radar data pipeline: ZeroMQ Pub/Sub streaming at 2GB/s, HDF5 archival, live + historical data serving. Lead developer & client liaison.</p>
+                    <div class="tags">
+                        <span class="tag">Rust</span>
+                        <span class="tag">ZeroMQ</span>
+                        <span class="tag">HDF5</span>
+                        <span class="tag">Arm64</span>
+                        <span class="tag">Systems Programming</span>
+                    </div>
+                </a>
+                <a href="bevy-game-project.html" class="card">
+                    <h2>Bevy Game Project</h2>
+                    <div class="meta">Solo · Rust · Bevy · Avian Physics · Early Prototype</div>
+                    <p>Story-based isometric game blending Stardew Valley's cozy simulation, Disco Elysium's narrative depth, and Monster Hunter's combat progression. Physics integration with Avian, level deconstruction/construction system with ECS and UI.</p>
+                    <div class="tags">
+                        <span class="tag">Rust</span>
+                        <span class="tag">Bevy</span>
+                        <span class="tag">Avian Physics</span>
+                        <span class="tag">ECS</span>
+                        <span class="tag">Isometric</span>
+                    </div>
+                </a>
+            </div>
         </section>
     </main>
     <footer>

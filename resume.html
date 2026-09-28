@@ -35,7 +35,8 @@
         .resume-hero { padding: 2rem 0 1rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
         .resume-hero h1 { font-size: 2.5rem; color: var(--wwu-dark-blue); margin-bottom: 0.5rem; }
         .resume-hero .tagline { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 1rem; }
-        .resume-hero .contact { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.95rem; color: var(--text); }
+        .resume-hero .contact { display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.95rem; color: var(--text); align-items: center; }
+        .resume-hero .contact .separator { color: var(--text-muted); }
         .resume-hero .contact a { color: var(--wwu-dark-blue); text-decoration: none; }
         .resume-hero .contact a:hover { text-decoration: underline; }
         .resume-hero .download-btn { display: inline-block; margin-top: 1rem; padding: 0.625rem 1.25rem; background: var(--wwu-dark-blue); color: white; text-decoration: none; border-radius: var(--radius); font-weight: 500; font-size: 0.9rem; transition: background 0.2s; }
@@ -105,8 +106,8 @@
             <p class="tagline">Systems & Software Engineer</p>
             <div class="contact">
                 <span>Bellingham, WA & Anchorage, AK</span>
-                <span>(907) 717-5360</span>
-                <span><a href="mailto:alexia.miska@gmail.com">alexia.miska@gmail.com</a></span>
+                <span class="separator" aria-hidden="true">·</span>
+                <span><a href="mailto:alexia.miska+portfolio@gmail.com">alexia.miska+portfolio@gmail.com</a></span>
             </div>
             <a href="Miska Alexia Resume.pdf" download class="download-btn">Download PDF</a>
         </header>
@@ -168,15 +169,16 @@
                         <span class="tag">Memory Management</span>
                     </div>
                 </a>
-                <a href="#" class="project-card" style="pointer-events: none; opacity: 0.7;">
+                <a href="bevy-game-project.html" class="project-card">
                     <h2>Bevy Game Project</h2>
-                    <div class="meta">Rust · 2025–Ongoing</div>
-                    <p>Physics setup with Avian engine including collider mapping. Level deconstruction/construction system with resource loading, scene management, ECS, and UI interaction. Built on Unity/Unreal experience.</p>
+                    <div class="meta">Solo · Rust · Bevy · Avian Physics · Early Prototype</div>
+                    <p>Story-based isometric game blending Stardew Valley's cozy simulation, Disco Elysium's narrative depth, and Monster Hunter's combat progression. Physics integration with Avian (collider mapping), level deconstruction/construction system with resource loading, scene management, ECS, and UI interaction.</p>
                     <div class="tags">
                         <span class="tag">Rust</span>
                         <span class="tag">Bevy</span>
                         <span class="tag">Avian Physics</span>
                         <span class="tag">ECS</span>
+                        <span class="tag">Isometric</span>
                     </div>
                 </a>
                 <a href="radar-server.html" class="project-card">
